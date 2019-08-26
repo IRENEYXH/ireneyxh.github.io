@@ -12,6 +12,11 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+#home_bg {
+  background-image: url("../img/home_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 nav {
   background-color: #6c9c55;
