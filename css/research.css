@@ -1,0 +1,14 @@
+.card {
+  font-family: 'Montserrat', sans-serif;
+  margin: 2% 15% 2% 15%;
+  padding: 0 6% 0 6%
+}
+
+.card-title{
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+}
+
+.card-text{
+  margin: 1% 0 0 3%;
+}
