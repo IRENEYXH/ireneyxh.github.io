@@ -2,36 +2,132 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Xuhan - Home</title>
+    <title>Xuhan - Portfolio</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway&display=swap" rel="stylesheet">
     <!-- bootstrap css -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="../css/basic.css">
+    <link rel="stylesheet" type="text/css" href="../css/home.css">
   </head>
-  <body id="home_bg">
-
+  <body>
     <!-- nav bar -->
-    <nav class="navbar navbar-expand-md fixed-top navbar-dark raleway">
+    <nav class="navbar shadow navbar-expand-md fixed-top navbar-dark raleway">
       <!-- <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button> -->
+      <!-- <img src="../assets/logo.png" alt="logo" style="height: 100%;"> -->
+      <a class="navbar-brand" href="#header" style="position: absolute; margen-left: 5%;">
+        <img src="../assets/logo.png" width="50" height="50" class="d-inline-block align-top" alt="">
+      </a>
+
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="project.html">Project</a>
-          <a class="nav-item nav-link" href="research.html">Research</a>
-          <a class="nav-item nav-link" href="contact.html">Contact</a>
+          <a class="nav-item nav-link active jumper" href="#header">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link jumper" href="#project">Project</a>
+          <a class="nav-item nav-link jumper" href="#research">Research</a>
+          <a class="nav-item nav-link jumper" href="#contact">Contact</a>
+          <a class="nav-item nav-link jumper" href="../Xuhan_Yang_Resume.pdf">CV</a>
         </div>
       </div>
     </nav>
 
+    <div id="header">
+      <img class="img-comp" src="../assets/home_background.jpg" alt="intro header">
+    </div>
+
+    <div id="project">
+      <h2 class="raleway" style="padding: 5%; text-align: center;">2019 Design Projects</h2>
+      <!-- cards -->
+      <div class="container">
+        <div class="card-deck montserrat">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Weather Window</h5>
+              <p class="card-text">Immersive AR weather app that visualizes forecast of world weather through a magic window.</p>
+              <img src="../assets/weather_window.png" alt="ww_logo" class="project-logo">
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">STARton</h5>
+              <p class="card-text">A task-directed platform for searching and publishing jobs where potential has a stage.</p>
+              <img src="../assets/STARton.png" alt="st_logo" class="project-logo">
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">InColor</h5>
+              <p class="card-text">An AI powered App that helps resolving daily confusions brought by color vision deficiency.</p>
+              <img src="../assets/InColor.png" alt="ic_logo" class="project-logo">
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Open Design</h5>
+              <p class="card-text">An open and evolutionary database for designers to share and build ideas.</p>
+              <p> (working in progress :)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="research">
+      <h2 class="raleway" style="padding: 5% 0 2% 0; text-align: center; color: white;">Undergraduate Research</h2>
+    <!-- cards -->
+    <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Bacteria and Diseases Name Normalization</h5>
+            <h6>@ Center for Microbiome Innovation</h6>
+            <p class="card-text">I'm working as a research assistant with CMI on an IBM collaborative NLP project that focuses on research of disease and bacteria name normalization. Currently, I'm helping with the UI/UX improvement of the MbA tool, collecting annotation data and testing the NormCo model.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">NESStype</h5>
+            <h6>@ cPASS</h6>
+            <p class="card-text">NESStype is an NLP based text annotation tool created by MSSL team of cPASS. I'm working as a research assistant to design the taxonomy structure and rules for weak supervision.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Emperor</h5>
+            <h6>@ Knight Lab</h6>
+            <p class="card-text">Emperor is a 3D visualization tool develped by Knight Lab. I'm working to improve the UI/UX design of the tool, and to develope new features to expand its capacity and usability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact">
+      <img class="img-comp" src="../assets/end.jpg" alt="contact card">
+    </div>
 
 
+    <script>
+      $(".jumper").on("click", function( e ) {
+
+          e.preventDefault();
+
+          $("body, html").animate({
+              scrollTop: $( $(this).attr('href') ).offset().top
+          }, 600);
+
+      });
+    </script>
     <!-- js CDN -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script>
+      $(".navbar-nav a").on('click', function(){
+          $(this).siblings().removeClass('active')
+          $(this).addClass('active');
+      })
+    </script>
+
   </body>
 </html>

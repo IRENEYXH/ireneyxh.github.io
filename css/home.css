@@ -1,0 +1,60 @@
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    text-align: center;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+
+.montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.img-comp {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#project {
+  padding-bottom: 5%;
+}
+
+.project-logo {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#contact_bg {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+nav {
+  background-color: #6c9c55;
+}
+
+#research {
+  background-color: #6c9c55;
+  padding-bottom: 5%;
+}
+#research .card {
+  font-family: 'Montserrat', sans-serif;
+  margin: 2% 15% 2% 15%;
+  padding: 0 6% 0 6%
+}
+
+#research .card-title{
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+}
+
+#research .card-text{
+  margin: 1% 0 0 3%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
