@@ -57,7 +57,7 @@ function onMouseup (event){
     endPoint.set(
       ((event.clientX/element.width) * 2 - 1,
       - (event.clientY/element.height) * 2 + 1,
-      0);
+      0));
 
     endPoint.unproject(camera);
 
@@ -77,7 +77,7 @@ function onMouseDown (event){
     startPoint.set(
       ((event.clientX/element.width) * 2 - 1,
       - (event.clientY/element.height) * 2 + 1,
-      0);
+      0));
 
     startPoint.unproject(camera);
     controls.enableRotate = false;
@@ -95,7 +95,7 @@ function onMouseMove (event){
     endPoint.set(
       ((event.clientX/element.width) * 2 - 1,
       - (event.clientY/element.height) * 2 + 1,
-      0);
+      0));
 
     endPoint.unproject(camera);
     controls.enableRotate = false;
