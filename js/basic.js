@@ -55,8 +55,8 @@ function onMouseup (event){
     mouse.unproject(camera);
 
     endPoint.set(
-      (( event.clientX - offset.left )/element.width) * 2 - 1,
-      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      ((event.clientX/element.width) * 2 - 1,
+      - (event.clientY/element.height) * 2 + 1,
       0);
 
     endPoint.unproject(camera);
@@ -75,8 +75,8 @@ function onMouseDown (event){
     mouse.unproject(camera);
 
     startPoint.set(
-      (( event.clientX - offset.left )/element.width) * 2 - 1,
-      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      ((event.clientX/element.width) * 2 - 1,
+      - (event.clientY/element.height) * 2 + 1,
       0);
 
     startPoint.unproject(camera);
@@ -93,8 +93,8 @@ function onMouseMove (event){
     mouse.unproject(camera);
 
     endPoint.set(
-      (( event.clientX - offset.left )/element.width) * 2 - 1,
-      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      ((event.clientX/element.width) * 2 - 1,
+      - (event.clientY/element.height) * 2 + 1,
       0);
 
     endPoint.unproject(camera);
