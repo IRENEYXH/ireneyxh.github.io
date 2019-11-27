@@ -23,10 +23,10 @@ controls.screenSpacePanning = false;
 controls.maxPolarAngle = Math.PI / 2;
 controls.enableKeys = true;
 
+var mouse = new THREE.Vector3();
 var startPoint = new THREE.Vector3();
 var endPoint = new THREE.Vector3();
 var lineBox = [];
-var isDown = false;
 var enableDraw = false;
 
 window.addEventListener( 'resize', onWindowResize, false );
