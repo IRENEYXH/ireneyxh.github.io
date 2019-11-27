@@ -54,7 +54,13 @@ function onMouseup (event){
     mouse.z = camera.z;
     mouse.unproject(camera);
 
-    endPoint.set(mouse.x, mouse.y, mouse.z);
+    endPoint.set(
+      (( event.clientX - offset.left )/element.width) * 2 - 1,
+      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      0);
+
+    endPoint.unproject(camera);
+
     drawBox(startPoint, endPoint);
     controls.enableRotate = true;
   }
@@ -68,7 +74,12 @@ function onMouseDown (event){
     mouse.z = camera.z;
     mouse.unproject(camera);
 
-    startPoint.set(mouse.x, mouse.y, mouse.z);
+    startPoint.set(
+      (( event.clientX - offset.left )/element.width) * 2 - 1,
+      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      0);
+
+    startPoint.unproject(camera);
     controls.enableRotate = false;
   }
 }
@@ -81,7 +92,12 @@ function onMouseMove (event){
     mouse.z = camera.z;
     mouse.unproject(camera);
 
-    endPoint.set(mouse.x, mouse.y, mouse.z);
+    endPoint.set(
+      (( event.clientX - offset.left )/element.width) * 2 - 1,
+      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      0);
+
+    endPoint.unproject(camera);
     controls.enableRotate = false;
   }
 }
