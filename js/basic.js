@@ -98,12 +98,12 @@ function drawBox (start, end){
 
   upLeft.x = Math.min( start.x, end.x );
   upLeft.y = Math.max( start.y, end.y );
-  upLeft.z = 0;
+  upLeft.z = start.z;
   downRight.x = Math.max( start.x, end.x );
   downRight.y = Math.min( start.y, end.y );
-  upLeft.z = 0;
-  upRight.set (downRight.x, upLeft.y, 0);
-  downLeft.set (upLeft.x, downRight.y, 0);
+  upLeft.z = start.z;
+  upRight.set (downRight.x, upLeft.y, start.z);
+  downLeft.set (upLeft.x, downRight.y, start.z);
 
   drawLine(upLeft, upRight);
   drawLine(upLeft, downLeft);
