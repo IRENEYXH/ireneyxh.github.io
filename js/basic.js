@@ -54,7 +54,7 @@ function onMouseup (event){
     mouse.z = camera.z;
     mouse.unproject(camera);
 
-    endPoint = mouse;
+    endPoint.set(mouse.x, mouse.y, mouse.z);
     drawBox(startPoint, endPoint);
     controls.enableRotate = true;
   }
@@ -68,7 +68,7 @@ function onMouseDown (event){
     mouse.z = camera.z;
     mouse.unproject(camera);
 
-    startPoint = mouse;
+    startPoint.set(mouse.x, mouse.y, mouse.z);
     controls.enableRotate = false;
   }
 }
@@ -81,7 +81,7 @@ function onMouseMove (event){
     mouse.z = camera.z;
     mouse.unproject(camera);
 
-    endPoint = mouse;
+    endPoint.set(mouse.x, mouse.y, mouse.z);
     controls.enableRotate = false;
   }
 }
