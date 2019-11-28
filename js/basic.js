@@ -47,6 +47,7 @@ $container.keydown(function(event){
 });
 
 function onMouseup (event){
+<<<<<<< HEAD
   if (enableDraw){
     var element = renderer.domElement;
     // mouse.x = (event.clientX/element.width) * 2 - 1;
@@ -102,8 +103,117 @@ function onMouseMove (event){
 
     endPoint.unproject(camera);
     controls.enableRotate = false;
+=======
+  var element = renderer.domElement;
+  var offset = $(element).offset();
+  endPoint.set(
+    (event.clientX/element.width) * 2 - 1,
+    - (event.clientY/element.height) * 2 + 1,
+    0);
+    endPoint.unproject( camera );
+    drawBox(startPoint, endPoint);
+    controls.enableRotate = true;
+}
+
+function onMouseDown (event){
+  var element = renderer.domElement;
+  var offset = $(element).offset();
+  var temp;
+
+  startPoint.set(
+    (event.clientX/element.width) * 2 - 1,
+    - (event.clientY/element.height) * 2 + 1,
+    0);
+
+  startPoint.unproject( camera );
+  controls.enableRotate = false;
+}
+
+function onMouseMove (event){
+  var element = renderer.domElement;
+  var offset = $(element).offset();
+  if ( isDown ) {
+    endPoint.set(
+      (event.clientX/element.width) * 2 - 1,
+      - (event.clientY/element.height) * 2 + 1,
+      0);
+      endPoint.unproject( camera );
+>>>>>>> parent of 8843f00... 1
   }
 }
+//
+// $container.mousedown(function(event){
+//   if (enableDraw) {
+//     var element = renderer.domElement;
+//     var offset = $(element).offset();
+//
+//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+//     mouse.z = 0;
+//     //mouse.unproject(camera);
+//
+//     startPoint.set(mouse.x, mouse.y, 0);
+//     // startPoint.set(
+//     //   (( event.clientX - offset.left )/element.width) * 2 - 1,
+//     //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
+//     //   0);
+//     //
+//     // startPoint.unproject( camera );
+//
+//     controls.enableRotate = false;
+//
+//     isDown = true;
+//   }
+// });
+//
+// $container.mousemove(function(event){
+//   if (enableDraw) {
+//     var element = renderer.domElement;
+//     var offset = $(element).offset();
+//     if ( isDown ) {
+//
+//       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+//       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+//       mouse.z = 0;
+//       //mouse.unproject(camera);
+//
+//       endPoint.set(mouse.x, mouse.y, 0);
+//
+//       // endPoint.set(
+//       //   (( event.clientX - offset.left )/element.width) * 2 - 1,
+//       //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
+//       //   0);
+//       //   endPoint.unproject( camera );
+//         drawBox(startPoint, endPoint);
+//         // scene.add( drawLine(startPoint, endPoint) );
+//         // renderer.render( scene, camera );
+//     }
+//   }
+// });
+// $container.mouseup(function(event){
+//   if (enableDraw) {
+//     var element = renderer.domElement;
+//     var offset = $(element).offset();
+//
+//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+//     mouse.z = 0;
+//     //mouse.unproject(camera);
+//
+//     endPoint.set(mouse.x, mouse.y, 0);
+//
+//     // endPoint.set(
+//     //   (( event.clientX - offset.left )/element.width) * 2 - 1,
+//     //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
+//     //   0);
+//     //   endPoint.unproject( camera );
+//       drawBox(startPoint, endPoint);
+//       // scene.add( drawLine(startPoint, endPoint) );
+//       // renderer.render( scene, camera );
+//       isDown = false;
+//       controls.enableRotate = true;
+//   }
+// });
 
 function drawBox (start, end){
   var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
