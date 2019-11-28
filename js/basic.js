@@ -55,7 +55,7 @@ function onMouseup (event){
       (( event.clientX - offset.left )/element.width) * 2 - 1,
       - (( event.clientY - offset.top )/element.height) * 2 + 1,
       0);
-      endPoint.unproject( camera );
+      //endPoint.unproject( camera );
 
       drawBox(startPoint, endPoint);
       controls.enableRotate = true;
@@ -71,7 +71,7 @@ function onMouseDown (event){
       (( event.clientX - offset.left )/element.width) * 2 - 1,
       - (( event.clientY - offset.top )/element.height) * 2 + 1,
       0);
-      startPoint.unproject( camera );
+      //startPoint.unproject( camera );
 
       controls.enableRotate = false;
   }
@@ -86,84 +86,12 @@ function onMouseMove (event){
       (( event.clientX - offset.left )/element.width) * 2 - 1,
       - (( event.clientY - offset.top )/element.height) * 2 + 1,
       0);
-      endPoint.unproject( camera );
+      //endPoint.unproject( camera );
 
       // drawBox(startPoint, endPoint);
   }
 }
-//
-// $container.mousedown(function(event){
-//   if (enableDraw) {
-//     var element = renderer.domElement;
-//     var offset = $(element).offset();
-//
-//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-//     mouse.z = 0;
-//     //mouse.unproject(camera);
-//
-//     startPoint.set(mouse.x, mouse.y, 0);
-//     // startPoint.set(
-//     //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-//     //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-//     //   0);
-//     //
-//     // startPoint.unproject( camera );
-//
-//     controls.enableRotate = false;
-//
-//     isDown = true;
-//   }
-// });
-//
-// $container.mousemove(function(event){
-//   if (enableDraw) {
-//     var element = renderer.domElement;
-//     var offset = $(element).offset();
-//     if ( isDown ) {
-//
-//       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-//       mouse.z = 0;
-//       //mouse.unproject(camera);
-//
-//       endPoint.set(mouse.x, mouse.y, 0);
-//
-//       // endPoint.set(
-//       //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-//       //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-//       //   0);
-//       //   endPoint.unproject( camera );
-//         drawBox(startPoint, endPoint);
-//         // scene.add( drawLine(startPoint, endPoint) );
-//         // renderer.render( scene, camera );
-//     }
-//   }
-// });
-// $container.mouseup(function(event){
-  // if (enableDraw) {
-  //   var element = renderer.domElement;
-  //   var offset = $(element).offset();
-  //
-  //   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  //   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  //   mouse.z = 0;
-  //   //mouse.unproject(camera);
-  //
-  //   endPoint.set(mouse.x, mouse.y, 0);
-  //
-  //   // endPoint.set(
-  //   //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-  //   //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-  //   //   0);
-  //   //   endPoint.unproject( camera );
-  //     drawBox(startPoint, endPoint);
-  //     // scene.add( drawLine(startPoint, endPoint) );
-  //     // renderer.render( scene, camera );
-  //     isDown = false;
-  //     controls.enableRotate = true;
-  // }
-// });
+
 
 function drawBox (start, end){
   console.log(start, end);
