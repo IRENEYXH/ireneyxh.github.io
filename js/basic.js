@@ -47,98 +47,48 @@ $container.keydown(function(event){
 });
 
 function onMouseup (event){
-<<<<<<< HEAD
-  if (enableDraw){
+  if (enableDraw) {
     var element = renderer.domElement;
-    // mouse.x = (event.clientX/element.width) * 2 - 1;
-    // mouse.y = - (event.clientY/element.height) * 2 + 1;
-    // mouse.z = camera.z;
-    // mouse.unproject(camera);
+    var offset = $(element).offset();
 
     endPoint.set(
-      ((event.clientX/element.width) * 2 - 1,
-      - (event.clientY/element.height) * 2 + 1,
-      0));
-
-    endPoint.unproject(camera);
-
-    console.log(startPoint, endPoint);
-
-    drawBox(startPoint, endPoint);
-    controls.enableRotate = true;
-    enableDraw = false;
-  }
-}
-
-function onMouseDown (event){
-  if (enableDraw){
-    var element = renderer.domElement;
-    // mouse.x = (event.clientX/element.width) * 2 - 1;
-    // mouse.y = - (event.clientY/element.height) * 2 + 1;
-    // mouse.z = camera.z;
-    // mouse.unproject(camera);
-
-    startPoint.set(
-      ((event.clientX/element.width) * 2 - 1,
-      - (event.clientY/element.height) * 2 + 1,
-      0));
-
-    startPoint.unproject(camera);
-    controls.enableRotate = false;
-  }
-}
-
-function onMouseMove (event){
-  if (enableDraw){
-    var element = renderer.domElement;
-    // mouse.x = (event.clientX/element.width) * 2 - 1;
-    // mouse.y = - (event.clientY/element.height) * 2 + 1;
-    // mouse.z = camera.z;
-    // mouse.unproject(camera);
-
-    endPoint.set(
-      ((event.clientX/element.width) * 2 - 1,
-      - (event.clientY/element.height) * 2 + 1,
-      0));
-
-    endPoint.unproject(camera);
-    controls.enableRotate = false;
-=======
-  var element = renderer.domElement;
-  var offset = $(element).offset();
-  endPoint.set(
-    (event.clientX/element.width) * 2 - 1,
-    - (event.clientY/element.height) * 2 + 1,
-    0);
-    endPoint.unproject( camera );
-    drawBox(startPoint, endPoint);
-    controls.enableRotate = true;
-}
-
-function onMouseDown (event){
-  var element = renderer.domElement;
-  var offset = $(element).offset();
-  var temp;
-
-  startPoint.set(
-    (event.clientX/element.width) * 2 - 1,
-    - (event.clientY/element.height) * 2 + 1,
-    0);
-
-  startPoint.unproject( camera );
-  controls.enableRotate = false;
-}
-
-function onMouseMove (event){
-  var element = renderer.domElement;
-  var offset = $(element).offset();
-  if ( isDown ) {
-    endPoint.set(
-      (event.clientX/element.width) * 2 - 1,
-      - (event.clientY/element.height) * 2 + 1,
+      (( event.clientX - offset.left )/element.width) * 2 - 1,
+      - (( event.clientY - offset.top )/element.height) * 2 + 1,
       0);
       endPoint.unproject( camera );
->>>>>>> parent of 8843f00... 1
+
+      drawBox(startPoint, endPoint);
+      controls.enableRotate = true;
+  }
+}
+
+function onMouseDown (event){
+  if (enableDraw) {
+    var element = renderer.domElement;
+    var offset = $(element).offset();
+
+    startPoint.set(
+      (( event.clientX - offset.left )/element.width) * 2 - 1,
+      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      0);
+      startPoint.unproject( camera );
+
+      controls.enableRotate = false;
+  }
+}
+
+function onMouseMove (event){
+  if (enableDraw) {
+    var element = renderer.domElement;
+    var offset = $(element).offset();
+
+    endPoint.set(
+      (( event.clientX - offset.left )/element.width) * 2 - 1,
+      - (( event.clientY - offset.top )/element.height) * 2 + 1,
+      0);
+      endPoint.unproject( camera );
+
+      // drawBox(startPoint, endPoint);
   }
 }
 //
@@ -191,31 +141,32 @@ function onMouseMove (event){
 //   }
 // });
 // $container.mouseup(function(event){
-//   if (enableDraw) {
-//     var element = renderer.domElement;
-//     var offset = $(element).offset();
-//
-//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-//     mouse.z = 0;
-//     //mouse.unproject(camera);
-//
-//     endPoint.set(mouse.x, mouse.y, 0);
-//
-//     // endPoint.set(
-//     //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-//     //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-//     //   0);
-//     //   endPoint.unproject( camera );
-//       drawBox(startPoint, endPoint);
-//       // scene.add( drawLine(startPoint, endPoint) );
-//       // renderer.render( scene, camera );
-//       isDown = false;
-//       controls.enableRotate = true;
-//   }
+  // if (enableDraw) {
+  //   var element = renderer.domElement;
+  //   var offset = $(element).offset();
+  //
+  //   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  //   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  //   mouse.z = 0;
+  //   //mouse.unproject(camera);
+  //
+  //   endPoint.set(mouse.x, mouse.y, 0);
+  //
+  //   // endPoint.set(
+  //   //   (( event.clientX - offset.left )/element.width) * 2 - 1,
+  //   //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
+  //   //   0);
+  //   //   endPoint.unproject( camera );
+  //     drawBox(startPoint, endPoint);
+  //     // scene.add( drawLine(startPoint, endPoint) );
+  //     // renderer.render( scene, camera );
+  //     isDown = false;
+  //     controls.enableRotate = true;
+  // }
 // });
 
 function drawBox (start, end){
+  console.log(start, end);
   var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
   material.light = true;
   var geometry = new THREE.Geometry();
