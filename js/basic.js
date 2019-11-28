@@ -49,10 +49,10 @@ $container.keydown(function(event){
 function onMouseup (event){
   if (enableDraw){
     var element = renderer.domElement;
-    mouse.x = (event.clientX/element.width) * 2 - 1;
-    mouse.y = - (event.clientY/element.height) * 2 + 1;
-    mouse.z = camera.z;
-    mouse.unproject(camera);
+    // mouse.x = (event.clientX/element.width) * 2 - 1;
+    // mouse.y = - (event.clientY/element.height) * 2 + 1;
+    // mouse.z = camera.z;
+    // mouse.unproject(camera);
 
     endPoint.set(
       ((event.clientX/element.width) * 2 - 1,
@@ -61,18 +61,21 @@ function onMouseup (event){
 
     endPoint.unproject(camera);
 
+    console.log(startPoint, endPoint);
+
     drawBox(startPoint, endPoint);
     controls.enableRotate = true;
+    enableDraw = false;
   }
 }
 
 function onMouseDown (event){
   if (enableDraw){
     var element = renderer.domElement;
-    mouse.x = (event.clientX/element.width) * 2 - 1;
-    mouse.y = - (event.clientY/element.height) * 2 + 1;
-    mouse.z = camera.z;
-    mouse.unproject(camera);
+    // mouse.x = (event.clientX/element.width) * 2 - 1;
+    // mouse.y = - (event.clientY/element.height) * 2 + 1;
+    // mouse.z = camera.z;
+    // mouse.unproject(camera);
 
     startPoint.set(
       ((event.clientX/element.width) * 2 - 1,
@@ -87,10 +90,10 @@ function onMouseDown (event){
 function onMouseMove (event){
   if (enableDraw){
     var element = renderer.domElement;
-    mouse.x = (event.clientX/element.width) * 2 - 1;
-    mouse.y = - (event.clientY/element.height) * 2 + 1;
-    mouse.z = camera.z;
-    mouse.unproject(camera);
+    // mouse.x = (event.clientX/element.width) * 2 - 1;
+    // mouse.y = - (event.clientY/element.height) * 2 + 1;
+    // mouse.z = camera.z;
+    // mouse.unproject(camera);
 
     endPoint.set(
       ((event.clientX/element.width) * 2 - 1,
