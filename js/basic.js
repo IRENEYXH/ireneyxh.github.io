@@ -113,6 +113,11 @@ function drawBox (start, end){
   upRight.set (downRight.x, upLeft.y, start.z);
   downLeft.set (upLeft.x, downRight.y, start.z);
 
+  upLeft.unproject(camera);
+  downLeft.unproject(camera);
+  upRight.unproject(camera);
+  downRight.unproject(camera);
+
   drawLine(upLeft, upRight);
   drawLine(upLeft, downLeft);
   drawLine(upRight, downRight);
