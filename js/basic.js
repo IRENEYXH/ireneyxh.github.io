@@ -23,10 +23,10 @@ controls.screenSpacePanning = false;
 controls.maxPolarAngle = Math.PI / 2;
 controls.enableKeys = true;
 
-var mouse = new THREE.Vector3();
 var startPoint = new THREE.Vector3();
 var endPoint = new THREE.Vector3();
 var lineBox = [];
+var isDown = false;
 var enableDraw = false;
 
 window.addEventListener( 'resize', onWindowResize, false );
@@ -47,126 +47,46 @@ $container.keydown(function(event){
 });
 
 function onMouseup (event){
-  if (enableDraw) {
+  if (enableDraw){
     var element = renderer.domElement;
-    var offset = $(element).offset();
+    mouse.x = (event.clientX/element.width) * 2 - 1;
+    mouse.y = - (event.clientY/element.height) * 2 + 1;
+    mouse.z = camera.z;
+    mouse.unproject(camera);
 
-    endPoint.set(
-      (( event.clientX - offset.left )/element.width) * 2 - 1,
-      - (( event.clientY - offset.top )/element.height) * 2 + 1,
-      0);
-      endPoint.unproject( camera );
-
-      drawBox(startPoint, endPoint);
-      controls.enableRotate = true;
+    endPoint = mouse;
+    drawBox(startPoint, endPoint);
+    controls.enableRotate = true;
   }
 }
 
 function onMouseDown (event){
-  if (enableDraw) {
+  if (enableDraw){
     var element = renderer.domElement;
-    var offset = $(element).offset();
+    mouse.x = (event.clientX/element.width) * 2 - 1;
+    mouse.y = - (event.clientY/element.height) * 2 + 1;
+    mouse.z = camera.z;
+    mouse.unproject(camera);
 
-    startPoint.set(
-      (( event.clientX - offset.left )/element.width) * 2 - 1,
-      - (( event.clientY - offset.top )/element.height) * 2 + 1,
-      0);
-      startPoint.unproject( camera );
-
-      controls.enableRotate = false;
+    startPoint = mouse;
+    controls.enableRotate = false;
   }
 }
 
 function onMouseMove (event){
-  if (enableDraw) {
+  if (enableDraw){
     var element = renderer.domElement;
-    var offset = $(element).offset();
+    mouse.x = (event.clientX/element.width) * 2 - 1;
+    mouse.y = - (event.clientY/element.height) * 2 + 1;
+    mouse.z = camera.z;
+    mouse.unproject(camera);
 
-    endPoint.set(
-      (( event.clientX - offset.left )/element.width) * 2 - 1,
-      - (( event.clientY - offset.top )/element.height) * 2 + 1,
-      0);
-      endPoint.unproject( camera );
-
-      // drawBox(startPoint, endPoint);
+    endPoint = mouse;
+    controls.enableRotate = false;
   }
 }
-//
-// $container.mousedown(function(event){
-//   if (enableDraw) {
-//     var element = renderer.domElement;
-//     var offset = $(element).offset();
-//
-//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-//     mouse.z = 0;
-//     //mouse.unproject(camera);
-//
-//     startPoint.set(mouse.x, mouse.y, 0);
-//     // startPoint.set(
-//     //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-//     //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-//     //   0);
-//     //
-//     // startPoint.unproject( camera );
-//
-//     controls.enableRotate = false;
-//
-//     isDown = true;
-//   }
-// });
-//
-// $container.mousemove(function(event){
-//   if (enableDraw) {
-//     var element = renderer.domElement;
-//     var offset = $(element).offset();
-//     if ( isDown ) {
-//
-//       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-//       mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-//       mouse.z = 0;
-//       //mouse.unproject(camera);
-//
-//       endPoint.set(mouse.x, mouse.y, 0);
-//
-//       // endPoint.set(
-//       //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-//       //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-//       //   0);
-//       //   endPoint.unproject( camera );
-//         drawBox(startPoint, endPoint);
-//         // scene.add( drawLine(startPoint, endPoint) );
-//         // renderer.render( scene, camera );
-//     }
-//   }
-// });
-// $container.mouseup(function(event){
-  // if (enableDraw) {
-  //   var element = renderer.domElement;
-  //   var offset = $(element).offset();
-  //
-  //   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  //   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-  //   mouse.z = 0;
-  //   //mouse.unproject(camera);
-  //
-  //   endPoint.set(mouse.x, mouse.y, 0);
-  //
-  //   // endPoint.set(
-  //   //   (( event.clientX - offset.left )/element.width) * 2 - 1,
-  //   //   - (( event.clientY - offset.top )/element.height) * 2 + 1,
-  //   //   0);
-  //   //   endPoint.unproject( camera );
-  //     drawBox(startPoint, endPoint);
-  //     // scene.add( drawLine(startPoint, endPoint) );
-  //     // renderer.render( scene, camera );
-  //     isDown = false;
-  //     controls.enableRotate = true;
-  // }
-// });
 
 function drawBox (start, end){
-  console.log(start, end);
   var material = new THREE.LineBasicMaterial( { color: 0xffffff } );
   material.light = true;
   var geometry = new THREE.Geometry();
@@ -178,12 +98,12 @@ function drawBox (start, end){
 
   upLeft.x = Math.min( start.x, end.x );
   upLeft.y = Math.max( start.y, end.y );
-  upLeft.z = start.z;
+  upLeft.z = 0;
   downRight.x = Math.max( start.x, end.x );
   downRight.y = Math.min( start.y, end.y );
-  upLeft.z = start.z;
-  upRight.set (downRight.x, upLeft.y, start.z);
-  downLeft.set (upLeft.x, downRight.y, start.z);
+  upLeft.z = 0;
+  upRight.set (downRight.x, upLeft.y, 0);
+  downLeft.set (upLeft.x, downRight.y, 0);
 
   drawLine(upLeft, upRight);
   drawLine(upLeft, downLeft);
