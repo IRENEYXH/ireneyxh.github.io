@@ -11,10 +11,10 @@ var camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHe
 camera.position.set( 0, 0, 10 );
 camera.lookAt( 0, 0, 1 );
 
-// drawLine(new THREE.Vector3(0,0,0), new THREE.Vector3(5,0,0));
-// drawLine(new THREE.Vector3(0,0,0), new THREE.Vector3(0,5,0));
-// drawLine(new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,5));
-// render();
+drawLine(new THREE.Vector3(0,0,0), new THREE.Vector3(5,0,0));
+drawLine(new THREE.Vector3(0,0,0), new THREE.Vector3(0,5,0));
+drawLine(new THREE.Vector3(0,0,0), new THREE.Vector3(0,0,5));
+render();
 
 var controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
