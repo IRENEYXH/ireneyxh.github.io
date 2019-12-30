@@ -22,6 +22,7 @@ controls.dampingFactor = 0.1;
 controls.screenSpacePanning = false;
 controls.maxPolarAngle = Math.PI / 2;
 controls.enableKeys = true;
+controls.panSpeed = 0.5;
 
 var mouse = new THREE.Vector3();
 var startPoint = new THREE.Vector3();
